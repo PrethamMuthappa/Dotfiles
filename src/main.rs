@@ -1,44 +1,45 @@
 use bevy::prelude::*;
 
-fn helloword() {
-    println!("hello bevy");
+#[derive(Component, Debug)]
+struct Position {
+    x: f32,
+    y: f32,
 }
 
-//adding components
-
-#[derive(Component)]
-struct Person;
-
-#[derive(Component)]
-struct Name(String);
-
-#[derive(Resource)]
-struct GreetTimer(Timer);
-
-fn add_people(mut commands: Commands) {
-    commands.spawn((Person, Name("pretham".to_lowercase())));
-    commands.spawn((Person, Name("pretham".to_lowercase())));
-    commands.spawn((Person, Name("pretham".to_lowercase())));
+#[derive(Component, Debug)]
+struct Velocity {
+    x: f32,
+    y: f32,
 }
 
-fn greet(time: Res<Time>, mut timer: ResMut<GreetTimer>, query: Query<&Name, With<Person>>) {
-    if timer.0.tick(time.delta()).just_finished() {
-        for name in &query {
-            println!("hello {}", name.0);
-        }
+fn spawn_spaceship(mut commands: Commands) {
+    commands.spawn((Position { x: 0.0, y: 0.0 }, Velocity { x: 1.0, y: 1.0 }));
+}
+
+fn update_position(mut query: Query<(&Velocity, &mut Position)>) {
+    for (velocity, mut position) in query.iter_mut() {
+        position.x += velocity.x;
+        position.y += velocity.y;
     }
 }
 
-pub struct HelloPlugin;
+fn print_pos(query: Query<(Entity, &mut Position)>) {
+    for (entity, position) in query.iter() {
+        println!("entity {:?} is at position {:?}", entity, position);
+    }
+}
 
-impl Plugin for HelloPlugin {
+pub struct SpacePlugin;
+impl Plugin for SpacePlugin {
     fn build(&self, app: &mut App) {
-        app.insert_resource(GreetTimer(Timer::from_seconds(2.0, TimerMode::Once)))
-            .add_systems(Startup, add_people)
-            .add_systems(Update, (helloword, greet));
+        app.add_systems(Startup, spawn_spaceship);
+        app.add_systems(Update, (update_position, print_pos));
     }
 }
 
 fn main() {
-    App::new().add_plugins((DefaultPlugins, HelloPlugin)).run();
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_plugins(SpacePlugin)
+        .run();
 }
