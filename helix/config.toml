@@ -1,0 +1,11 @@
+theme="autumn_night"
+
+[editor]
+line-number="relative"
+mouse=true
+bufferline="multiple"
+auto-completion=true
+auto-info=true
+
+[editor.cursor-shape]
+insert="bar"
