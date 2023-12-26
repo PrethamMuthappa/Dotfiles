@@ -21,9 +21,9 @@ text_composition_strategy legacy
 
 #: Window layout {{{
 
-# remember_window_size  no
-# initial_window_width  1000
-# initial_window_height 580
+ remember_window_size  no
+ initial_window_width  720
+ initial_window_height 490
 
 draw_minimal_borders no
 
