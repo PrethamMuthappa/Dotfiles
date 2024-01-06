@@ -1,0 +1,17 @@
+[user]
+	email = prethambachira1819@gmail.com
+	name = PrethamMuthappa
+
+[alias]
+        st = status	
+	ci = commit
+	all = commit -am
+	br = branch
+	org = remote add origin 
+	push = push -u origin main
+	fpush = push -f origin main
+	
+[init]
+       defaultBranch = main
+       
+	
