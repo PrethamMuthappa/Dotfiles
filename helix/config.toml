@@ -1,17 +1,17 @@
-theme = "nord"
+theme = "autumn_night"
 
 [editor]
 mouse = true
 scroll-lines = 1
 cursorline = true
 auto-save = true
-completion-trigger-len = 1
+#completion-trigger-len = 1
 color-modes = true
 #rulers = [80,120]
 idle-timeout = 50
 bufferline = "multiple"
 line-number = "relative"
-shell = ["fish", "-c"]
+shell = ["bash", "-c"]
 
 [editor.file-picker]
 hidden = false
@@ -140,3 +140,4 @@ C-e = ["collapse_selection", "insert_at_line_end"]
 # insert "macros"
 h = { s = { r = ["normal_mode", ":insert-output echo '=>'", "collapse_selection", "insert_at_line_end"] } }
 n = { r = { a = ["normal_mode", ":insert-output echo '->'", "collapse_selection", "insert_at_line_end"] } }
+
