@@ -25,9 +25,11 @@ text_composition_strategy legacy
  initial_window_width  720
  initial_window_height 490
 
-draw_minimal_borders no
+draw_minimal_borders titlebar-only
 
 confirm_os_window_close 1
+
+hide_window_decorations yes
 
 
 #: }}}
@@ -108,4 +110,3 @@ background #261028
 background_opacity 0.8
 
 #: }}}
-
