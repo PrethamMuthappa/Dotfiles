@@ -21,9 +21,6 @@ sudo apt install python3
 sudo apt install pip
 sudo apt install gnome-tweaks
 
-#for rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 #for helix
 
 sudo add-apt-repository ppa:maveonair/helix-editor
@@ -35,6 +32,12 @@ cd
 sudo apt install npm
 sudo apt install ubuntu-cleaner
 sudo apt install plocate
+sudo apt install mysql-server mysql-client
+sudo apt-get install simplescreenrecorder
+sudo apt install synaptic
+
+#for rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 #lsp for helix
 rustup component add rust-analyzer
